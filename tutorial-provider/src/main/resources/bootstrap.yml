@@ -1,0 +1,31 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: provider-service
+  security:
+    user:
+      name: root
+      password: root
+  zipkin:
+      baseUrl: http://localhost:7000
+
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+    instance-id: ${eureka.instance.hostname}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://root:root@localhost:8000/eureka
+      #,http://root:root@localhost:8001/eureka,http://root:root@localhost:8002/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+#        SpringBootActuator监控暴露所有接口
+  endpoint:
+     health:
+          show-details: ALWAYS

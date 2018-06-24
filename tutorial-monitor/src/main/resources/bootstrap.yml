@@ -1,0 +1,20 @@
+server:
+  port: 13000
+
+spring:
+  application:
+    name: monitor-service
+  security:
+    user:
+      name: root
+      password: root
+
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+    instance-id: ${eureka.instance.hostname}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://root:root@localhost:8000/eureka
+      ##,http://root:root@localhost:8001/eureka,http://root:root@localhost:8002/eureka

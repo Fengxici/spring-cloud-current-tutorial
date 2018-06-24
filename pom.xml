@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>timing.springcloud</groupId>
+  <artifactId>tutorial-master</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <modules>
+    <module>tutorial-register</module>
+      <module>tutorial-provider</module>
+    <module>tutorial-consumer</module>
+      <module>tutorial-turbine</module>
+      <module>tutorial-gateway</module>
+      <module>tutorial-config-native</module>
+      <module>tutorial-config-client</module>
+      <module>tutorial-sleuth-zipkin</module>
+      <module>tutorial-monitor</module>
+  </modules>
+
+  <name>tutorial-master</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>10</java.version>
+    <jaxb-version>2.3.0</jaxb-version>
+    <javax.activation-version>1.1.1</javax.activation-version>
+    <!--java 10-->
+    <org.projectlombok-version>1.18.0</org.projectlombok-version>
+  </properties>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.0.3.RELEASE</version>
+  </parent>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>Finchley.RELEASE</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!--因为JAXB-API是java ee的一部分，在jdk10中没有在默认的类路径中；-->
+      <!--java ee api在jdk中还是存在的，默认没有加载而已，jdk9中引入了模块的概念，可以使用-->
+      <!--模块命令–add-modules java.xml.bind引入jaxb-api;-->
+      <dependency>
+        <groupId>javax.xml.bind</groupId>
+        <artifactId>jaxb-api</artifactId>
+        <version>${jaxb-version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.sun.xml.bind</groupId>
+        <artifactId>jaxb-impl</artifactId>
+        <version>${jaxb-version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.glassfish.jaxb</groupId>
+        <artifactId>jaxb-runtime</artifactId>
+        <version>${jaxb-version}</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.activation</groupId>
+        <artifactId>activation</artifactId>
+        <version>${javax.activation-version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  <repositories>
+    <repository>
+      <id>repo.spring.io-milestones</id>
+      <name>repo.spring.io-milestones</name>
+      <url>https://repo.spring.io/libs-milestone-local</url>
+    </repository>
+    <repository>
+      <id>repo.spring.io-snapshots</id>
+      <name>repo.spring.io-snapshots</name>
+      <url>https://repo.spring.io/libs-snapshot-local</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+</project>

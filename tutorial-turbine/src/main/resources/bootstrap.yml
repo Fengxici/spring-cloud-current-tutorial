@@ -1,0 +1,37 @@
+server:
+  port: 11000
+
+spring:
+  application:
+    name: turbine-dashboard
+  security:
+    user:
+      name: root
+      password: root
+
+
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+    instance-id: ${eureka.instance.hostname}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://root:root@localhost:8000/eureka
+      ##,http://root:root@localhost:8001/eureka,http://root:root@localhost:8002/eureka
+
+turbine:
+  appConfig: consumer-service
+  aggregator:
+    clusterConfig: default
+  clusterNameExpression: new String("default")
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+#        SpringBootActuator监控暴露所有接口
+  endpoint:
+     health:
+          show-details: ALWAYS

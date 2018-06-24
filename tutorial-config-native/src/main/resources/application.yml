@@ -1,0 +1,27 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: config-local-service
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          searchLocations: classpath:/config
+  rabbitmq:
+    host: 192.168.0.103
+    port: 5672
+    username: guest
+    password: guest
+
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+    instance-id: ${eureka.instance.hostname}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://root:root@localhost:8000/eureka
+      ##,http://root:root@localhost:8001/eureka,http://root:root@localhost:8002/eureka
