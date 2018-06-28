@@ -1,4 +1,4 @@
-package timing.springcloud.toturial.register;
+package timing.springcloud.tutorial.register;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
