@@ -1,5 +1,4 @@
-server:
-  port: 7000
+QUERY_PORT: 7000
 spring:
   application:
     name: sleuth-zipkin-server
@@ -12,7 +11,7 @@ eureka:
   instance:
     hostname: localhost
     prefer-ip-address: true
-    instance-id: ${eureka.instance.hostname}:${server.port}
+    instance-id: ${eureka.instance.hostname}:${QUERY_PORT:9411}
   client:
     serviceUrl:
       defaultZone: http://root:root@localhost:8000/eureka

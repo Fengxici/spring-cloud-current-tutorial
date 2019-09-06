@@ -1,5 +1,5 @@
 server:
-  port: 10000
+  port: 14000
 
 service:
   url: http://consumer-service
@@ -12,7 +12,10 @@ spring:
       name: root
       password: root
   zipkin:
-    baseUrl: http://localhost:7000
+    base-url: http://localhost:7000
+  sleuth:
+    sampler:
+      probability: 1.0
 
 eureka:
   instance:
