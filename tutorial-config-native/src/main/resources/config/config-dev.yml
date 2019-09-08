@@ -1,0 +1,4 @@
+provider:
+  hello: hello, i am provider
+consumer:
+  hello: hello, i am consumer

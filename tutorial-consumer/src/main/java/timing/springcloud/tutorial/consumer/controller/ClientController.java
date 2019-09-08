@@ -6,6 +6,7 @@ import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,7 +24,13 @@ public class ClientController {
 	private RestTemplate restTemplate;
 	@Autowired
     private DiscoveryClient client;
-	
+	@Value("${consumer.hello}")
+	private String hello;
+
+	@RequestMapping("/consumer")
+	public String from() {
+		return this.hello;
+	}
 	
 	@GetMapping("/index")
 	public ModelAndView index() {
@@ -34,7 +41,7 @@ public class ClientController {
 	
 	@GetMapping("/service")
 	public Map<String,String> service() {
-		Map<String,String> map = new HashMap<String,String>();
+		Map<String,String> map = new HashMap<>();
 		map.put("mykey", "mydata");
 		return map;
 	}

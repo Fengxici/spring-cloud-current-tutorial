@@ -12,6 +12,16 @@ spring:
   sleuth:
     sampler:
       probability: 1.0
+  cloud:
+    config:
+      name: config
+      profile: dev
+      uri: http://localhost:8888/
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
 
 eureka:
   instance:
@@ -20,8 +30,7 @@ eureka:
     instance-id: ${eureka.instance.hostname}:${server.port}
   client:
     service-url:
-      defaultZone: http://root:root@localhost:8000/eureka
-      #,http://root:root@localhost:8001/eureka,http://root:root@localhost:8002/eureka
+      defaultZone: http://root:root@localhost:8000/eureka,http://root:root@localhost:8001/eureka,http://root:root@localhost:8002/eureka
 
 management:
   endpoints:
@@ -30,5 +39,5 @@ management:
         include: "*"
 #        SpringBootActuator监控暴露所有接口
   endpoint:
-     health:
-          show-details: ALWAYS
+    health:
+      show-details: ALWAYS

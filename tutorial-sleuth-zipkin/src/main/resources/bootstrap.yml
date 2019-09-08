@@ -14,8 +14,7 @@ eureka:
     instance-id: ${eureka.instance.hostname}:${QUERY_PORT:9411}
   client:
     serviceUrl:
-      defaultZone: http://root:root@localhost:8000/eureka
-      ##,http://root:root@localhost:8001/eureka,http://root:root@localhost:8002/eureka
+      defaultZone: http://root:root@localhost:8000/eureka,http://root:root@localhost:8001/eureka,http://root:root@localhost:8002/eureka
 
 management:
   endpoints:

@@ -15,7 +15,6 @@
         <module>tutorial-turbine</module>
         <module>tutorial-gateway</module>
         <module>tutorial-config-native</module>
-        <module>tutorial-config-client</module>
         <module>tutorial-sleuth-zipkin</module>
         <module>tutorial-monitor</module>
     </modules>

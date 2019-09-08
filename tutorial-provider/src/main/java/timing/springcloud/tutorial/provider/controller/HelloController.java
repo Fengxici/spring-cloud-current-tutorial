@@ -1,12 +1,17 @@
 package timing.springcloud.tutorial.provider.controller;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
+@RefreshScope
 public class HelloController {
+
+    @Value("${provider.hello}")
+    private String hello;
 
     @RequestMapping("/hello")
     public String index(@RequestParam String name) {
@@ -26,5 +31,12 @@ public class HelloController {
     @ResponseBody
     public String feignservice(HttpServletResponse response, @PathVariable String para) {
         return para + "_service";
+    }
+
+
+
+    @RequestMapping("/provider")
+    public String from() {
+        return this.hello;
     }
 }
