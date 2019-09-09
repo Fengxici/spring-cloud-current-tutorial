@@ -3,10 +3,11 @@ spring:
   application:
     name: sleuth-zipkin-server
   security:
-      user:
-        name: root
-        password: root
-
+    user:
+      name: root
+      password: root
+  profiles:
+    include: shared
 eureka:
   instance:
     hostname: localhost

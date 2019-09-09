@@ -22,7 +22,7 @@ eureka:
 zuul:
   routes:
     provider:
-      path: /**
+      path: /api/**
       serviceId: consumer-service
 
 management:
